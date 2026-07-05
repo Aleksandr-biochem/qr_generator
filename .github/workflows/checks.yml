@@ -25,7 +25,9 @@ jobs:
         uses: Swatinem/rust-cache@v2
 
       - name: Check formatting
-        run: cargo fmt --all --check
+        run: |
+          cd qr_generator
+          cargo fmt --all --check
 
       - name: Run Rust tests
         run: cargo test --all
