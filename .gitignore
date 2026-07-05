@@ -1,0 +1,3 @@
+target/*
+qr_generator/target/*
+qr_generator/www/pkg

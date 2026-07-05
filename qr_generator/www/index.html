@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>QR Generator</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <main class="app">
+    <section class="panel">
+      <h1>QR Generator</h1>
+      <p class="intro">
+        Enter an HTTP or HTTPS link, preview the QR code, then download it.
+      </p>
+
+      <label for="qr-input">URL</label>
+      <input
+        id="qr-input"
+        type="url"
+        placeholder="https://example.com"
+        value="https://example.com"
+      />
+
+      <div class="grid">
+        <label>
+          Foreground
+          <input id="foreground" type="color" value="#111111" />
+        </label>
+
+        <label>
+          Background
+          <input id="background" type="color" value="#ffffff" />
+        </label>
+
+        <label>
+          Style
+          <select id="style">
+            <option value="square">Square</option>
+            <option value="rounded">Rounded</option>
+            <option value="dot">Dots</option>
+          </select>
+        </label>
+
+        <label class="checkbox">
+          <input id="transparent" type="checkbox" />
+          Transparent background
+        </label>
+      </div>
+
+      <p id="status" role="status"></p>
+
+      <div class="buttons">
+        <button id="download-png" type="button">Download PNG</button>
+        <button id="download-jpeg" type="button">Download JPEG</button>
+      </div>
+    </section>
+
+    <section class="preview">
+      <canvas id="qr-canvas" width="512" height="512" aria-label="QR code preview"></canvas>
+    </section>
+  </main>
+
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
