@@ -33,16 +33,24 @@ jobs:
         uses: Swatinem/rust-cache@v2
 
       - name: Check formatting
-        run: cargo fmt --all --check
+        run: |
+          cd qr_generator
+          cargo fmt --all --check
 
       - name: Run Rust tests
-        run: cargo test --all
+        run: |
+          cd qr_generator
+          cargo test --all
 
       - name: Install wasm-pack
-        run: cargo install wasm-pack --locked
+        run: |
+          cd qr_generator
+          cargo install wasm-pack --locked
 
       - name: Build WebAssembly package
-        run: wasm-pack build --release --target web --out-dir www/pkg
+        run: |
+          cd qr_generator
+          wasm-pack build --release --target web --out-dir www/pkg
 
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
@@ -50,7 +58,7 @@ jobs:
       - name: Upload GitHub Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: www
+          path: qr_generator/www
 
   deploy:
     name: Deploy site
