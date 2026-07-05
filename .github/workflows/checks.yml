@@ -30,10 +30,16 @@ jobs:
           cargo fmt --all --check
 
       - name: Run Rust tests
-        run: cargo test --all
+        run: |
+          cd qr_generator
+          cargo test --all
 
       - name: Install wasm-pack
-        run: cargo install wasm-pack --locked
+        run: |
+          cd qr_generator
+          cargo install wasm-pack --locked
 
       - name: Build WebAssembly package
-        run: wasm-pack build --target web --out-dir www/pkg
+        run: |
+          cd qr_generator
+          wasm-pack build --target web --out-dir www/pkg
